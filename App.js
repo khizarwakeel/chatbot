@@ -2,23 +2,17 @@ const chatBox = document.getElementById('chat-box');
 const inputField = document.getElementById('input-field');
 const sendButton = document.getElementById('send-button');
 
-const botResponses = {
-    hello: "Hi there! How can I assist you today?",
-    help: "Sure, what do you need help with?",
-    goodbye: "Goodbye! Have a great day!",
-    default: "Sorry, I didn't understand that. Can you please clarify?"
-};
+const botTriggers = ['hello', 'help', 'goodbye'];
+const botResponses = [
+    "Hi there! How can I assist you today?",
+    "Sure, what do you need help with?",
+    "Goodbye! Have a great day!"
+];
+const defaultResponse = "Sorry, I didn't understand that. Can you please clarify?";
 
 function addMessage(message, sender) {
     const messageElement = document.createElement('div');
-    messageElement.classList.add('message');
-
-    if (sender === 'user') {
-        messageElement.classList.add('user-message');
-    } else {
-        messageElement.classList.add('bot-message');
-    }
-
+    messageElement.classList.add('message', sender === 'user' ? 'user-message' : 'bot-message');
     messageElement.textContent = message;
     chatBox.appendChild(messageElement);
 
@@ -30,6 +24,11 @@ function addMessage(message, sender) {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
+function getBotResponse(userMessage) {
+    const triggerIndex = botTriggers.indexOf(userMessage);
+    return triggerIndex !== -1 ? botResponses[triggerIndex] : defaultResponse;
+}
+
 function handleUserInput() {
     const userMessage = inputField.value.trim().toLowerCase();
 
@@ -37,7 +36,7 @@ function handleUserInput() {
 
     addMessage(userMessage, 'user');
 
-    let botMessage = botResponses[userMessage] || botResponses.default;
+    const botMessage = getBotResponse(userMessage);
 
     setTimeout(() => {
         addMessage(botMessage, 'bot');
