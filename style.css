@@ -22,6 +22,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    position: relative;
 }
 
 #chat-header {
@@ -91,30 +92,25 @@ body {
     padding: 15px;
     background-color: white;
     border-top: 1px solid #ddd;
+    position: relative;
 }
 
 #input-field {
     flex: 1;
-    padding: 10px;
+    padding: 10px 40px 10px 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
     outline: none;
     font-size: 1rem;
 }
 
-#send-button {
-    padding: 10px 15px;
-    background-color: #212121;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    margin-left: 10px;
+.sendIcon {
+    color: rgb(170, 169, 169);
+    position: absolute;
+    right: 30px;
+    bottom: 50%;
+    transform: translateY(50%);
     cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#send-button:hover {
-    background-color: #212121;
 }
 
 @media screen and (max-width: 600px) {
@@ -126,12 +122,10 @@ body {
         padding: 10px 8px;
     }
 
-    #send-button {
-        padding: 0px 5px;
-        border-radius: 100%;
-    }
-
     #chat-header {
         padding: 20px 0px;
+    }
+    .sendIcon {
+        right: 24px;
     }
 }
