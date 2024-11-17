@@ -29,7 +29,7 @@ body {
     background-color: #212121;
     color: white;
     text-align: center;
-    padding: 30px 0px;
+    padding: 25px 0px;
     font-size: 1.2rem;
     font-weight: bold;
     border-top-left-radius: 10px;
@@ -39,26 +39,13 @@ body {
 #chat-box {
     flex: 1;
     padding: 15px;
-    background-color: #f1f1f1;
+    background-color: #f0efef;
     overflow-y: auto;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
     scrollbar-width: thin;
     scrollbar-color: #212121 #f1f1f1;
-}
-
-#chat-box::-webkit-scrollbar {
-    width: 5px;
-}
-
-#chat-box::-webkit-scrollbar-thumb {
-    background-color: #212121;
-    border-radius: 4px;
-}
-
-#chat-box::-webkit-scrollbar-track {
-    background-color: #f1f1f1;
 }
 
 .message {
